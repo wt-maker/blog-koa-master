@@ -8,5 +8,5 @@ app.use(bodyParser())
 app.use(router.routes())
 
 app.listen(3030, () => {
-    console.log('the server is listen on port 3000')
+    console.log('the server is listen on port 3030')
 })

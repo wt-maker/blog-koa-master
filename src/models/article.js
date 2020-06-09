@@ -19,10 +19,9 @@ const articleSchema = new Schema({
         required: true
     },
     // 标签
-    tag: {
-        type: String,
-        required: true
-    },
+    tag: [{
+        type: mongoose.Schema.Types.ObjectId
+    }],
     // 编辑内容
     editContent: {
         type: String,
