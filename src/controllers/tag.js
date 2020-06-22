@@ -24,9 +24,18 @@ const getAllTags = async() => {
     return res
 }
 
+const getTagById = async(id) => {
+    let res = null
+    await Tag.findById(id, (err, doc) => {
+        res =  doc
+    })
+    return res
+}
+
 module.exports = {
     addTag,
     deleteTag,
     updateTag,
-    getAllTags
+    getAllTags,
+    getTagById
 }
