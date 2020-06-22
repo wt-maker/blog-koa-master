@@ -20,7 +20,8 @@ const articleSchema = new Schema({
     },
     // 标签
     tag: [{
-        type: mongoose.Schema.Types.ObjectId
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
     }],
     // 编辑内容
     editContent: {
