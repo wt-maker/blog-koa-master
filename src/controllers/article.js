@@ -9,10 +9,7 @@ const addArticle = async(data) => {
 }
 
 const getArticleById = async(id) => {
-    let res = null
-    await Article.findById(id, (err, doc) => {
-        res =  doc
-    })
+    let res = await Article.findById(id).populate('tag')
     return res
 }
 
@@ -25,10 +22,7 @@ const updateArticle = async(id, data) => {
 }
 
 const getAllAtricle = async() => {
-    let res = null
-    await Article.find({}, (err, doc) => {
-        res = doc
-    })
+    let res = await Article.find().populate('tag')
     return res
 }
 
