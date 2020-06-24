@@ -21,6 +21,7 @@ const articleSchema = new Schema({
     // 标签
     tag: [{
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tag',
         required: true
     }],
     // 编辑内容
@@ -53,4 +54,3 @@ const articleSchema = new Schema({
 const Article = mongoose.model('Article', articleSchema)
 
 module.exports = Article
-
