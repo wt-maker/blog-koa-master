@@ -1,7 +1,7 @@
 const { addArticle, getArticleById, delectArticle, updateArticle, getAllAtricle } = require('../controllers/article')
 const { successResponse, errorResponse } = require('../utils/responstHandle')
 const { RESPONSE_CODE } = require('../config')
-const articleRoute = (router) => {
+const articleRouter = (router) => {
 
     const ADD_ARTICLE = async (ctx, next) => {
         let data = ctx.request.body
@@ -76,4 +76,4 @@ const articleRoute = (router) => {
     router.get('/getArticles', GET_ALL_ARTICLE)
 }
 
-module.exports = articleRoute
+module.exports = articleRouter
