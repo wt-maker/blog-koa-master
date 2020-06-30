@@ -18,37 +18,34 @@ const getFundDataById = async (id) => {
     })
 }
 
-
 const getFundData = async (arr) => {
+    const length = arr.length
     let res = []
-    return new Promise((resolve, reject) => {
-        let length = arr.length
-        arr.map( async (item, index) => {
+
+    return await Promise.all(arr.map(async (item, index) => {
+        return (async () => {
             let data = await getFundDataById(item.serialNumber)
             let dom = new JSDOM(data)
             let applies = dom.window.document.getElementById('gz_gszzl').innerHTML
-            res.push({
+            return {
                 applies,
                 serialNumber: item.serialNumber,
                 name: item.name,
                 position: item.position
-            })
-            if (length === index+1) {
-                resolve(res)
             }
-        })
-    })
+        })()
+    }))
 }
 
 const addFund = async (data) => {
     let res = null
-    if(data) {
+    if (data) {
         res = new Fund(data).save()
     }
     return res
 }
 
-const getAllFund = async() => {
+const getAllFund = async () => {
     let res = null
     await Fund.find({}, (err, doc) => {
         res = doc
