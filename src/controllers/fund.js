@@ -19,8 +19,6 @@ const getFundDataById = async (id) => {
 }
 
 const getFundData = async (arr) => {
-    const length = arr.length
-    let res = []
 
     return await Promise.all(arr.map(async (item, index) => {
         return (async () => {
@@ -28,6 +26,7 @@ const getFundData = async (arr) => {
             let dom = new JSDOM(data)
             let applies = dom.window.document.getElementById('gz_gszzl').innerHTML
             return {
+                id: item._id,
                 applies,
                 serialNumber: item.serialNumber,
                 name: item.name,
@@ -53,9 +52,19 @@ const getAllFund = async () => {
     return res
 }
 
+const updateFund = async (id, data) => {
+    return await Fund.findByIdAndUpdate(id, data)
+}
+
+const deleteFund = async (id) => {
+    return await Fund.findByIdAndRemove(id)
+}
+
 module.exports = {
     getFundDataById,
     addFund,
     getAllFund,
-    getFundData
+    getFundData,
+    updateFund,
+    deleteFund
 }
