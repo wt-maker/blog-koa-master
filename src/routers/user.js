@@ -24,10 +24,12 @@ const userRouter = (router) => {
 
                 let token = jwt.sign({
                     _id: userInfo._id,
-                    username: data.username
-                }, 'wt-token', { expiresIn: '1h' })
+                    username: data.username,
+                    exp: Math.floor(Date.now() / 1000) + (60 * 60)
+                }, 'wt-token')
                 res = {
-                    token
+                    token,
+                    exp: Math.floor(Date.now() / 1000) + (60 * 60)
                 }
                 successResponse({ ctx, message: '查询成功', res})
             } else {
