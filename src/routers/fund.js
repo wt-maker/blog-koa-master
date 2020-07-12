@@ -46,7 +46,7 @@ const fundRouter = (router) => {
             errorResponse({ ctx, status: RESPONSE_CODE.RESPONSE_CODE_SERVER_ERROR, message: '查询失败', error })
         }
     }
-    router.get('/getAllFund', GET_ALL_FUND)
+    router.get('/getFunds', GET_ALL_FUND)
 
     const UPDATE_FUND_BY_ID = async (ctx, next) => {
         let { id } = ctx.params

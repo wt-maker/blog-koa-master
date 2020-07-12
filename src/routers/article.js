@@ -31,7 +31,7 @@ const articleRouter = (router) => {
             errorResponse({ ctx, status: RESPONSE_CODE.RESPONSE_CODE_NOT_FOUND, message: '查询失败', error: '缺少参数id' })
         }
     }
-    router.get('/get/:id', GET_ARTICLE_BY_ID)
+    router.get('/getArticle/:id', GET_ARTICLE_BY_ID)
 
     const DELETE_ARTICLE = async (ctx, next) => {
         let { id } = ctx.params
@@ -46,7 +46,7 @@ const articleRouter = (router) => {
             errorResponse({ ctx, message: '删除失败', error: '缺少参数id' })
         }
     }
-    router.get('/delete/:id', DELETE_ARTICLE)
+    router.get('/deleteArticle/:id', DELETE_ARTICLE)
 
     const UPDATE_ARTICLE = async (ctx, next) => {
         let { id } = ctx.params
@@ -63,7 +63,7 @@ const articleRouter = (router) => {
             errorResponse({ ctx, message: '更新失败', error: '缺少参数id' })
         }
     }
-    router.post('/update/:id', UPDATE_ARTICLE)
+    router.post('/updateArticle/:id', UPDATE_ARTICLE)
 
     const GET_ALL_ARTICLE = async (ctx, next) => {
         try {

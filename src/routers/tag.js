@@ -58,7 +58,7 @@ const tagRouter = (router) => {
         }
     }
 
-    router.get('/getAllTags', GET_ALL_TAGS)
+    router.get('/getTags', GET_ALL_TAGS)
 
 
     const GET_TAG_BY_ID = async (ctx, next) => {
