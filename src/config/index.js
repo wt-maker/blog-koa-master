@@ -2,6 +2,11 @@ const MONGODB = {
     url: 'mongodb://127.0.0.1:27017/blog_data'
 }
 
+// token有效时长 单位S（秒）
+const TOKEN_VAILD = {
+    TIME: 3600
+}
+
 const RESPONSE_CODE = {
     RESPONSE_CODE_OK: 200,
     RESPONSE_CODE_BAD_REQUEST: 400,
@@ -12,5 +17,6 @@ const RESPONSE_CODE = {
 }
 module.exports = {
     MONGODB,
-    RESPONSE_CODE
+    RESPONSE_CODE,
+    TOKEN_VAILD
 }
