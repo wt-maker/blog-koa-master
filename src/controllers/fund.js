@@ -2,34 +2,31 @@ const Fund = require('../models/fund')
 const charset = require('superagent-charset')
 const superagent = charset(require('superagent'))
 const jsdom = require('jsdom')
+const axios = require('axios')
 const { JSDOM } = jsdom
 
 const getFundDataById = async (id) => {
-    let url = `http://fund.eastmoney.com/${id}.html?spm=search`
+    let url = `http://fundgz.1234567.com.cn/js/${id}.js`
     return new Promise((resolve, reject) => {
-        superagent
-            .get(url)
-            .end((err, sres) => {
-                if (err) {
-                    reject(err)
-                }
-                resolve(sres.text)
-            })
+        axios.get(url).then(
+            response => {
+                resolve(response.data)
+            }
+        )
     })
 }
 
 const getFundData = async (arr) => {
 
-    return await Promise.all(arr.map(async (item, index) => {
+    return await Promise.all(arr.map(async (item) => {
         return (async () => {
             let data = await getFundDataById(item.serialNumber)
-            let dom = new JSDOM(data)
-            let applies = dom.window.document.getElementById('gz_gszzl').innerHTML
+            let response = JSON.parse(data.substring(data.indexOf('{'), data.lastIndexOf('}')+1))
             return {
                 id: item._id,
-                applies,
-                serialNumber: item.serialNumber,
-                name: item.name,
+                applies: response.gszzl,
+                serialNumber: response.fundcode,
+                name: response.name,
                 position: item.position
             }
         })()
