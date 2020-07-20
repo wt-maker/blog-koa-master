@@ -8,11 +8,6 @@ const fundSchema = new Schema({
         type: String,
         required: true
     },
-    // 基金名称
-    name: {
-        type: String,
-        required: true
-    },
     // 持仓
     position: {
         type:Number,
