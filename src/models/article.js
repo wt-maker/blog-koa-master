@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const mongoosePaginate = require('mongoose-paginate')
 
 const Schema = mongoose.Schema
 // 文章模型
@@ -50,6 +51,8 @@ const articleSchema = new Schema({
         default: Date.now
     }
 })
+
+articleSchema.plugin(mongoosePaginate)
 
 const Article = mongoose.model('Article', articleSchema)
 

@@ -46,11 +46,11 @@ const getAllAtricle = async (data) => {
 
     let options = {
         select: '-__v',
-        sort: { create_dt: -1 },
+        sort: { create_dt: 1 },
         populate: {
             path: 'tag',
             select: 'name color',
-            sort: {create_dt: -1}
+            sort: {create_dt: 1}
         },
         page: Number(page),
         limit: Number(limit)

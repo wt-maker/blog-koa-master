@@ -6,7 +6,7 @@ const router = require('./src/routers')
 
 const app = new Koa()
 mongoConnect()
-app.use(verifyToken)
+//app.use(verifyToken)
 app.use(bodyParser())
 app.use(router.routes())
 

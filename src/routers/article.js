@@ -66,8 +66,10 @@ const articleRouter = (router) => {
     router.post('/updateArticle/:id', UPDATE_ARTICLE)
 
     const GET_ALL_ARTICLE = async (ctx, next) => {
+
+        let data = ctx.request.query
         try {
-            let res = await getAllAtricle()
+            let res = await getAllAtricle(data)
             successResponse({ ctx, message: '查询成功', res })
         } catch (error) {
             errorResponse({ ctx, status:RESPONSE_CODE.RESPONSE_CODE_NOT_FOUND, message: '查询失败', error })
