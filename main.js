@@ -3,10 +3,11 @@ const verifyToken = require('./src/middleware/requestVerify')
 const mongoConnect = require('./src/mongodb/index')
 const bodyParser = require('koa-bodyparser')
 const router = require('./src/routers')
+const axios = require('axios')
 
 const app = new Koa()
 mongoConnect()
-//app.use(verifyToken)
+app.use(verifyToken)
 app.use(bodyParser())
 app.use(router.routes())
 

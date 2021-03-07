@@ -1,9 +1,5 @@
 const Fund = require('../models/fund')
-const charset = require('superagent-charset')
-const superagent = charset(require('superagent'))
-const jsdom = require('jsdom')
 const axios = require('axios')
-const { JSDOM } = jsdom
 
 const getFundDataById = async (id) => {
     let url = `http://fundgz.1234567.com.cn/js/${id}.js`

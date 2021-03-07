@@ -4,7 +4,10 @@
   "description": "",
   "main": "main.js",
   "dependencies": {
+    "FileReader": "^0.10.2",
     "axios": "^0.19.2",
+    "bufferjs": "^3.0.1",
+    "iconv-jschardet": "^2.0.12",
     "jsdom": "^16.2.2",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.12.0",

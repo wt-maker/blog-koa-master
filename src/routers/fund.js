@@ -1,9 +1,6 @@
-const { getFundDataById, addFund, getAllFund, getFundData, updateFund, deleteFund } = require('../controllers/fund')
+const { addFund, getAllFund, getFundData, updateFund, deleteFund } = require('../controllers/fund')
 const { successResponse, errorResponse } = require('../utils/responstHandle')
 const { RESPONSE_CODE } = require('../config')
-const jsdom = require('jsdom')
-const { update } = require('../models/fund')
-const { JSDOM } = jsdom
 
 const fundRouter = (router) => {
 
@@ -18,20 +15,6 @@ const fundRouter = (router) => {
     }
 
     router.post('/addFund', ADD_FUND)
-
-    const GET_FUND_BY_ID = async (ctx, next) => {
-        let { id } = ctx.params
-        try {
-            let data = await getFundDataById(id)
-            let dom = new JSDOM(data)
-            let applies = dom.window.document.getElementById('gz_gszzl').innerHTML
-            let res = { applies }
-            successResponse({ ctx, message: '查询成功', res })
-        } catch (error) {
-            errorResponse({ ctx, status: RESPONSE_CODE.RESPONSE_CODE_SERVER_ERROR, message: '查询失败', error })
-        }
-    }
-    router.get('/getFund/:id', GET_FUND_BY_ID)
 
     const GET_ALL_FUND = async (ctx, next) => {
         try {
