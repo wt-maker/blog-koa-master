@@ -5,7 +5,7 @@
   "main": "main.js",
   "dependencies": {
     "FileReader": "^0.10.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bufferjs": "^3.0.1",
     "iconv-jschardet": "^2.0.12",
     "jsdom": "^16.2.2",
