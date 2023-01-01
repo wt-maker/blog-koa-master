@@ -17,7 +17,7 @@
     "mongoose": "^5.9.6",
     "mongoose-paginate": "^5.0.3",
     "nodemon": "^2.0.4",
-    "webpack": "^4.43.0"
+    "webpack": "^5.75.0"
   },
   "devDependencies": {
     "cheerio": "^1.0.0-rc.3",
